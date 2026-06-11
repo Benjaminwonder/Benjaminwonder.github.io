@@ -1,2 +1,2 @@
-# Personal-website
+# benjamindavis.github.io
 A deep dive into my research interests and projects raging from finished to prospective
