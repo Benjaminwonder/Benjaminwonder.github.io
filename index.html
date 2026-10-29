@@ -1,77 +1,445 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Benjamin Nukunu Davis | CS + Physics | Quantum Chaos → Aerospace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benjamin Nukunu Davis — Computational Dynamics · Open Quantum Systems · Aerospace</title>
+  <meta name="description" content="Benjamin Nukunu Davis — Physics + Computer Science, Stetson University '27. Simulation and validation of chaotic and open quantum systems: semiclassical hybrid RNG with 0.939 bits/bit assessed min-entropy (NIST SP 800-90B). Targeting PhD work in hypersonics, propulsion, and deployable aerospace structures.">
+  <meta name="theme-color" content="#0B0D0F">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Benjamin Nukunu Davis">
+  <meta property="og:description" content="Computational dynamics · Open quantum systems · Hardware validation. Physics + CS, Stetson University '27.">
+  <meta property="og:url" content="https://benjaminwonder.github.io/">
+  <meta property="og:image" content="https://benjaminwonder.github.io/profile.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Spectral:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>Benjamin Nukunu Davis</h1>
-  <p>CS + Physics (Stetson '27) | Chaos-quantum systems • Computational methods • Hardware validation</p>
-  <nav>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top" aria-label="Benjamin Nukunu Davis, back to top">B<span>·</span>N<span>·</span>D</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#demo">Demo</a>
+      <a href="#projects">Projects</a>
+      <a href="#hands-on">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section id="hero">
-  <p>Reasoning from First-principles.</p>
-  <a href="CV.pdf" class="button">Access to CV</a>
-</section>
+<main id="main">
 
-<section id="research">
-  <h2>Research</h2>
-  <div class="project">
-    <h3>Semiclassical Entropy Pump: Chaotic–Quantum Hybrid RNG</h3>
-    <p>First-author work (w/, Idahosa). Double-pendulum chaotic trajectories modulate qubit for high-entropy bit generation.</p>
-    <ul>
-      <li>74Million+ bits simulated, H_min ≈ 0.997, 100% NIST SP 800-22 pass after SHA-256</li>
-      <li>NumPy simulations + real-time LabVIEW hardware implementation</li>
-      <li>Paper submitted to <em>Chaos</em>; hardware budget secured ($3,260)</li>
+  <!-- ============ HERO ============ -->
+  <section id="top" class="hero container" aria-label="Profile">
+
+    <div class="id-card">
+      <img class="portrait" src="profile.jpg" alt="Portrait of Benjamin Nukunu Davis" width="190" height="190">
+      <h1 class="name">Benjamin Nukunu Davis</h1>
+      <p class="handle">Physics + Computer Science · Stetson University ’27</p>
+      <ul class="tags" aria-label="Focus areas">
+        <li>Computational dynamics</li>
+        <li>Open quantum systems</li>
+        <li>Hardware validation</li>
+      </ul>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-actions">
+        <a class="btn btn-primary" href="#research">View research</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <span class="btn btn-muted" aria-disabled="true">CV — available upon request</span>
+      </div>
+      <p class="bio">
+        I build simulations of chaotic and quantum systems, then hold them to experimental and
+        statistical standards. My current work couples double-pendulum chaos to a driven qubit as an
+        entropy source — 3×10<sup>8</sup> raw bits at <strong>0.939 bits/bit</strong> assessed
+        min-entropy (NIST SP 800-90B) — with a hand-built, encoder-instrumented pendulum for measured
+        trajectories. Next: PhD research in hypersonics, propulsion, and deployable aerospace structures.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ============ 01 RESEARCH ============ -->
+  <section id="research" class="section container" aria-labelledby="research-h">
+    <header class="sec-head">
+      <span class="sec-idx">01</span>
+      <h2 id="research-h">Research</h2>
+    </header>
+
+    <!-- Study A: Hybrid RNG -->
+    <article class="study" aria-labelledby="rng-h">
+      <header class="study-head">
+        <p class="study-meta">
+          <span>Dec 2025 – Present</span>
+          <span>Stetson University</span>
+          <span>Advisors: Dr. Kevin Riggs, Dr. Koc Basar</span>
+        </p>
+        <h3 id="rng-h">Semiclassical chaos–quantum hybrid random number generator</h3>
+        <p class="study-lede">
+          Chaotic double-pendulum trajectories modulate the Hamiltonian of a driven qubit. The
+          response is extracted, conditioned, and statistically certified as a high-entropy bitstream.
+        </p>
+      </header>
+
+      <dl class="readouts" aria-label="Key results">
+        <div class="ro ro-key">
+          <dt>Assessed min-entropy · NIST SP 800‑90B · raw source</dt>
+          <dd><span class="v">0.939</span><span class="u">bits/bit</span><span class="m">minimum across the full non-IID estimator suite</span></dd>
+        </div>
+        <div class="ro">
+          <dt>Raw output · simulated</dt>
+          <dd><span class="v">3×10<sup>8</sup></span><span class="u">bits</span><span class="m">Python extraction pipeline</span></dd>
+        </div>
+        <div class="ro">
+          <dt>Conditioned · 4:1 SHA‑256</dt>
+          <dd><span class="v">7.5×10<sup>7</sup></span><span class="u">bits</span><span class="m">conditioned output stream</span></dd>
+        </div>
+        <div class="ro">
+          <dt>NIST SP 800‑22 · conditioned</dt>
+          <dd><span class="v">15/15</span><span class="u">categories</span><span class="m">all test categories passed</span></dd>
+        </div>
+        <div class="ro">
+          <dt>Energy drift · relative</dt>
+          <dd><span class="v">1.7×10<sup>−6</sup></span><span class="m">over 2×10<sup>4</sup> s · implicit conservative scheme</span></dd>
+        </div>
+      </dl>
+
+      <dl class="spec">
+        <div>
+          <dt>Problem</dt>
+          <dd>Can a chaotic classical system serve as an entropy source for a quantum degree of freedom, with entropy claims that survive physically realistic dynamics and standard statistical assessment?</dd>
+        </div>
+        <div>
+          <dt>Approach</dt>
+          <dd>Coupled pendulum–qubit simulation in Python (NumPy, SciPy, QuTiP) under a Lindblad master equation; 4:1 SHA-256 conditioning; NIST SP 800-90B on the raw source and SP 800-22 on the conditioned stream; a physical pendulum for measured trajectories.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Co-developed the generator; built the simulation and extraction pipeline; designed and built the instrumented pendulum; ran the entropy assessment. First author on the manuscript.</dd>
+        </div>
+      </dl>
+
+      <div class="decisions">
+        <h4>Key decisions</h4>
+        <ol>
+          <li>
+            <p class="d-title">Open-system model</p>
+            <p>Replaced a closed-system Schrödinger model with a Lindblad master equation after the unitary model produced unphysically idealized dynamics, capturing realistic relaxation and dephasing.</p>
+          </li>
+          <li>
+            <p class="d-title">Conservative integration</p>
+            <p>Moved the classical integrator to an implicit conservative scheme to eliminate unphysical energy growth: relative drift 1.7×10<sup>−6</sup> over 2×10<sup>4</sup> s.</p>
+          </li>
+          <li>
+            <p class="d-title">From simulation to measurement</p>
+            <p>Designed and built a physical double pendulum with two wireless rotary encoders, extending the work to measured trajectories and phase portraits.</p>
+          </li>
+          <li>
+            <p class="d-title">Conservative entropy claim</p>
+            <p>Reported the minimum across the full SP 800-90B non-IID estimator suite on the raw source, and validated the conditioned stream separately against all 15 SP 800-22 categories.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="figs">
+        <figure class="fig">
+          <img src="media/pendulum-hardware.jpg" loading="lazy"
+               alt="Hand-built double pendulum instrumented with two wireless rotary encoders"
+               data-slot="media/pendulum-hardware.jpg">
+          <figcaption><span>Fig. 1</span> Hand-built double pendulum with two wireless rotary encoders.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="media/phase-portrait.png" loading="lazy"
+               alt="Phase portrait of the double-pendulum trajectory"
+               data-slot="media/phase-portrait.png">
+          <figcaption><span>Fig. 2</span> Double-pendulum phase portrait.</figcaption>
+        </figure>
+      </div>
+
+      <p class="transfer">
+        <span class="transfer-k">Aerospace relevance</span>
+        Stiff, energy-sensitive integration and open-system noise models are the same numerical problems
+        that govern hypersonic-flow and combustion-instability simulation. Certified entropy sources are a
+        primitive for secure telemetry and command links.
+      </p>
+    </article>
+
+    <!-- Study B: Collective cell mechanics -->
+    <article class="study" aria-labelledby="cell-h">
+      <header class="study-head">
+        <p class="study-meta">
+          <span>Jun 2026 – Present</span>
+          <span>Stetson University</span>
+          <span>Advisor: Dr. Holley E. Lynch</span>
+          <span class="status">In progress</span>
+        </p>
+        <h3 id="cell-h">Collective cell mechanics: an agent-based tissue model</h3>
+        <p class="study-lede">
+          Does tissue spread during axolotl epiboly as a Kelvin–Voigt viscoelastic solid? A mechanically
+          extended Vicsek simulator, built and verified to answer it.
+        </p>
+      </header>
+
+      <dl class="readouts" aria-label="Key results">
+        <div class="ro ro-key">
+          <dt>Baseline validation · Vicsek et al. (1995)</dt>
+          <dd><span class="v">13/13</span><span class="u">checks passed</span><span class="m">order–noise transition reproduced</span></dd>
+        </div>
+        <div class="ro">
+          <dt>Throughput · periodic KD-tree</dt>
+          <dd><span class="v">~3</span><span class="u">ms/step</span><span class="m">at 2,000 agents</span></dd>
+        </div>
+        <div class="ro">
+          <dt>Test suite · pytest</dt>
+          <dd><span class="v">50+</span><span class="u">tests</span><span class="m">regression and physics checks</span></dd>
+        </div>
+      </dl>
+
+      <dl class="spec">
+        <div>
+          <dt>Problem</dt>
+          <dd>Determine whether epiboly tissue spreading is consistent with Kelvin–Voigt viscoelastic-solid mechanics.</dd>
+        </div>
+        <div>
+          <dt>Approach</dt>
+          <dd>Vicsek alignment extended with a Hookean spring force, Voronoi-tessellated cell contacts, and inertial dynamics; Python/NumPy simulator delivered as a Streamlit app.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Extended the model, derived the integrator stability bounds, and built the simulator and its validation suite.</dd>
+        </div>
+      </dl>
+
+      <div class="decisions">
+        <h4>Key decisions</h4>
+        <ol>
+          <li>
+            <p class="d-title">Mechanics in the model</p>
+            <p>Added a Hookean spring force and Voronoi tessellation to the standard Vicsek model to define cell contacts and neighbor geometry.</p>
+          </li>
+          <li>
+            <p class="d-title">Inertial dynamics</p>
+            <p>Random per-cell masses, headings driven by net force, and energy-conserving elastic collisions.</p>
+          </li>
+          <li>
+            <p class="d-title">Derived, not tuned, time-stepping</p>
+            <p>Derived stability bounds that set adaptive symplectic sub-stepping, verified against the analytic two-body oscillator.</p>
+          </li>
+          <li>
+            <p class="d-title">Built to be shared</p>
+            <p>Fault-isolated model lineages in a Streamlit app shared with a collaborator, so variants can evolve without breaking the validated baseline.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="figs">
+        <figure class="fig">
+          <img src="media/cell-sim.png" loading="lazy"
+               alt="Snapshot of the agent-based tissue simulator"
+               data-slot="media/cell-sim.png">
+          <figcaption><span>Fig. 3</span> Simulator snapshot.</figcaption>
+        </figure>
+      </div>
+
+      <p class="transfer">
+        <span class="transfer-k">Aerospace relevance</span>
+        Particle-based many-body simulation verified against analytic limits: the same V&amp;V discipline
+        behind CFD, DSMC for rarefied hypersonic flow, and multi-agent GNC.
+      </p>
+    </article>
+  </section>
+
+  <!-- ============ 02 PUBLICATIONS ============ -->
+  <section id="publications" class="section container" aria-labelledby="pubs-h">
+    <header class="sec-head">
+      <span class="sec-idx">02</span>
+      <h2 id="pubs-h">Publications</h2>
+    </header>
+
+    <ol class="pubs">
+      <li class="pub">
+        <p class="cite">
+          <strong>B. N. Davis</strong>, Idahosa, K. Riggs.
+          “Semiclassical Entropy Transfer: Numerical Characterization of a Proposed Semiclassical
+          Hybrid Random Number Generator.”
+        </p>
+        <p class="pub-meta">
+          <span class="chip">In preparation</span>
+          <span>Manuscript in preparation for journal submission · 2026</span>
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ 03 DEMO ============ -->
+  <section id="demo" class="section container" aria-labelledby="demo-h">
+    <header class="sec-head">
+      <span class="sec-idx">03</span>
+      <h2 id="demo-h">Hardware demonstration</h2>
+    </header>
+
+    <figure class="video">
+      <div class="video-frame" data-slot="media/demo.mp4">
+        <video controls preload="metadata" playsinline poster="media/demo-poster.jpg" width="608" height="1080">
+          <source src="media/demo.mp4" type="video/mp4"
+                  onerror="this.closest('.video-frame').classList.add('is-missing')">
+          Narrated demonstration of the instrumented double pendulum.
+        </video>
+      </div>
+      <figcaption>
+        Narrated walkthrough of the instrumented double pendulum. Two wireless rotary encoders record
+        the chaotic trajectory, extending the entropy-source model from simulation to measured data.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 04 PROJECTS ============ -->
+  <section id="projects" class="section container" aria-labelledby="projects-h">
+    <header class="sec-head">
+      <span class="sec-idx">04</span>
+      <h2 id="projects-h">Engineering projects</h2>
+    </header>
+
+    <ul class="rows">
+      <li class="row">
+        <div class="row-main">
+          <h3>Satellite fuel allocator</h3>
+          <p class="row-tag">Java · orbital mechanics</p>
+          <p>Pairs propellant tanks against maneuver targets using Δv budgets from the Tsiolkovsky equation (Δv = v<sub>e</sub> ln(m<sub>0</sub>/m<sub>f</sub>)) and O(n) hash-map pairing; handles duplicate, missing, and invalid inputs.</p>
+        </div>
+        <p class="row-metric"><span class="v">≈15%</span><span class="u">allocation-efficiency gain</span></p>
+      </li>
+      <li class="row">
+        <div class="row-main">
+          <h3>Embedded sensor processing</h3>
+          <p class="row-tag">C++ · embedded systems</p>
+          <p>Sorts sensor data inside a fixed memory budget modeled on aerospace and automotive microcontrollers. Instruments swaps, comparisons, and <code>std::chrono</code> timing; early termination for real-time deadlines; <code>std::mt19937</code> randomized reliability tests.</p>
+        </div>
+        <p class="row-metric"><span class="v">1 KB</span><span class="u">memory envelope</span></p>
+      </li>
+      <li class="row">
+        <div class="row-main">
+          <h3>Real-time data acquisition</h3>
+          <p class="row-tag">LabVIEW (G) · instrumentation</p>
+          <p>Ramp-voltage generation with TDMS logging and integrated sensors for physics experiments.</p>
+        </div>
+        <p class="row-metric"><span class="v">15 kHz</span><span class="u">ramp-voltage generation</span></p>
+      </li>
+      <li class="row">
+        <div class="row-main">
+          <h3>ColorText Notifier</h3>
+          <p class="row-tag">JavaScript · Chrome Extensions API</p>
+          <p>Event-driven page monitor using MutationObserver instead of polling; rate-limited (2 s cooldown) Pushbullet alerts; validated CSS-selector, HEX, and regex inputs.</p>
+        </div>
+        <p class="row-metric"><span class="v">−25%</span><span class="u">CPU vs. polling</span></p>
+      </li>
     </ul>
-    <p><strong>Relevance:</strong> Entropy sources, secure avionics, computational modeling of complex systems for hypersonics/propulsion.</p>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div>
-      <h4>Satellite Fuel Optimizer (C++)</h4>
-      <p>~15% efficiency gain via dynamic simulation and optimization.</p>
+  <!-- ============ 05 HANDS-ON ============ -->
+  <section id="hands-on" class="section container" aria-labelledby="hands-h">
+    <header class="sec-head">
+      <span class="sec-idx">05</span>
+      <h2 id="hands-h">Hands-on engineering</h2>
+    </header>
+
+    <article class="job">
+      <header class="job-head">
+        <h3>Nazo Engineering Services Ltd</h3>
+        <p class="study-meta"><span>Apprentice</span><span>2014 – 2019</span></p>
+      </header>
+      <p class="job-lede">Five years of maintenance and fabrication on production machinery before university.</p>
+      <ul class="ticks">
+        <li>Operated and maintained <strong>10+ M6FFC grain-milling machines</strong> serving hundreds of customers per day</li>
+        <li>Performed preventive maintenance on diesel generators to prevent operational downtime</li>
+        <li>Maintained SMAW welding equipment and angle grinders for production operations</li>
+        <li>Fabricated metal and thermoplastic components for home appliances</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============ 06 SKILLS ============ -->
+  <section id="skills" class="section container" aria-labelledby="skills-h">
+    <header class="sec-head">
+      <span class="sec-idx">06</span>
+      <h2 id="skills-h">Skills &amp; tools</h2>
+    </header>
+
+    <div class="skills">
+      <div class="skill">
+        <h3>Simulation &amp; numerics</h3>
+        <p>Python (NumPy, SciPy, QuTiP) · Wolfram Mathematica · Lindblad master equations · implicit &amp; symplectic integrators · agent-based models · KD-tree and Voronoi geometry</p>
+      </div>
+      <div class="skill">
+        <h3>Verification &amp; statistics</h3>
+        <p>NIST SP 800-90B · NIST SP 800-22 · analytic benchmark verification · pytest regression suites</p>
+      </div>
+      <div class="skill">
+        <h3>Hardware &amp; acquisition</h3>
+        <p>LabVIEW (G) · rotary-encoder instrumentation · TDMS logging · SMAW welding · metal and thermoplastic fabrication</p>
+      </div>
+      <div class="skill">
+        <h3>Software</h3>
+        <p>C++ · Java · JavaScript · SQL · LaTeX · Git · Linux · Streamlit · TensorFlow · REST APIs</p>
+      </div>
     </div>
-    <div>
-      <h4>LabVIEW Real-Time Control Systems</h4>
-      <p>15 kHz ramp voltage, TDMS logging, sensor integration for physics experiments.</p>
+  </section>
+
+  <!-- ============ 07 EDUCATION & LEADERSHIP ============ -->
+  <section id="education" class="section container" aria-labelledby="edu-h">
+    <header class="sec-head">
+      <span class="sec-idx">07</span>
+      <h2 id="edu-h">Education &amp; leadership</h2>
+    </header>
+
+    <div class="two-col">
+      <div>
+        <h3>Stetson University</h3>
+        <p class="study-meta"><span>B.S. Physics &amp; Computer Science (dual major)</span><span>Expected May 2027</span><span>GPA 3.67</span></p>
+        <p class="honors">Presidential Fellows Scholarship (top 1% of admitted students) · Dean’s List</p>
+        <p class="course"><span>Physics</span> Classical Mechanics · Electromagnetism · Relativity · Atomic/Nuclear Physics · Lab Techniques</p>
+        <p class="course"><span>CS</span> Computer Organization · Algorithm Analysis · Software Development (C++) · Data Science · Discrete Mathematics</p>
+      </div>
+      <div>
+        <h3>AFROTC · Embry-Riddle Aeronautical University</h3>
+        <p class="study-meta"><span>Det 157</span></p>
+        <p><strong>Flight Commander.</strong> Led cadet units and technical drills under operational constraints while mentoring teams to mission readiness. Also served as Flight Academics Officer and Flight Physical Fitness Officer.</p>
+        <p class="course"><span>Stetson</span> Presidential Fellow Mentor for incoming students</p>
+      </div>
     </div>
-    <div>
-      <h4>Chrome Extension Automation</h4>
-      <p>Multi-tab booking handling for high-volume workflows.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <p><strong>Programming Languages:</strong> Python (NumPy, QuTiP, SciPy), Java, C++, LabVIEW</p>
-  <p><strong>Domains:</strong> Quantum simulation, chaotic systems, real-time hardware, computational fluid dynamics foundations, first-principles modeling</p>
-</section>
+  <!-- ============ 08 CONTACT ============ -->
+  <section id="contact" class="section container" aria-labelledby="contact-h">
+    <header class="sec-head">
+      <span class="sec-idx">08</span>
+      <h2 id="contact-h">Contact</h2>
+    </header>
 
-<section id="education">
-  <h2>Education</h2>
-  <p>Stetson University — B.S. Physics + Computer Science (Class of 2027), Presidential Fellow</p>
-  <p>Coursework: Modern Physics, Electricity and Magnetism, Mechanics I, Maths Methods in Physics, Computer Organization, Algorithm Analysis, Laboratory Techniques</p>
-</section>
+    <p class="contact-lede">Open to PhD research in hypersonics, propulsion, and deployable aerospace structures, and to research and engineering roles in aerospace.</p>
+    <ul class="links">
+      <li><a href="mailto:bdavis10@stetson.edu">bdavis10@stetson.edu</a></li>
+      <li><a href="https://github.com/Benjaminwonder" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/benjamin-davis-nukunu/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://x.com/BenjaminWonder3" target="_blank" rel="noopener">X</a></li>
+      <li><span class="btn btn-muted" aria-disabled="true">CV — available upon request</span></li>
+    </ul>
+    <p class="offduty">Outside the lab: rocketry, robotics, SCUBA, skydiving, hiking, Formula 1, philosophy.</p>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>bdavis10@stetson.edu | https://github.com/Benjaminwonder | www.linkedin.com/in/benjamin-davis-nukunu | X: @BenjaminWonder3 </p>
-</section>
+</main>
+
+<footer class="footer container">
+  <p>© 2026 Benjamin Nukunu Davis · DeLand, Florida</p>
+</footer>
 
 </body>
 </html>
