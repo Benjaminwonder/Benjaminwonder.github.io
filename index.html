@@ -112,42 +112,45 @@
         </div>
       </dl>
 
-      <dl class="spec">
-        <div>
-          <dt>Problem</dt>
-          <dd>Can a chaotic classical system serve as an entropy source for a quantum degree of freedom, with entropy claims that survive physically realistic dynamics and standard statistical assessment?</dd>
-        </div>
-        <div>
-          <dt>Approach</dt>
-          <dd>Coupled pendulum–qubit simulation in Python (NumPy, SciPy, QuTiP) under a Lindblad master equation; 4:1 SHA-256 conditioning; NIST SP 800-90B on the raw source and SP 800-22 on the conditioned stream; a physical pendulum for measured trajectories.</dd>
-        </div>
-        <div>
-          <dt>My role</dt>
-          <dd>Co-developed the generator; built the simulation and extraction pipeline; designed and built the instrumented pendulum; ran the entropy assessment. First author on the manuscript.</dd>
-        </div>
-      </dl>
+      <p class="role"><span>My role</span> Co-developed the generator; built the simulation and extraction pipeline; designed and built the instrumented pendulum; ran the entropy assessment. First author on the manuscript.</p>
 
-      <div class="decisions">
-        <h4>Key decisions</h4>
-        <ol>
-          <li>
-            <p class="d-title">Open-system model</p>
-            <p>Replaced a closed-system Schrödinger model with a Lindblad master equation after the unitary model produced unphysically idealized dynamics, capturing realistic relaxation and dephasing.</p>
-          </li>
-          <li>
-            <p class="d-title">Conservative integration</p>
-            <p>Moved the classical integrator to an implicit conservative scheme to eliminate unphysical energy growth: relative drift 1.7×10<sup>−6</sup> over 2×10<sup>4</sup> s.</p>
-          </li>
-          <li>
-            <p class="d-title">From simulation to measurement</p>
-            <p>Designed and built a physical double pendulum with two wireless rotary encoders, extending the work to measured trajectories and phase portraits.</p>
-          </li>
-          <li>
-            <p class="d-title">Conservative entropy claim</p>
-            <p>Reported the minimum across the full SP 800-90B non-IID estimator suite on the raw source, and validated the conditioned stream separately against all 15 SP 800-22 categories.</p>
-          </li>
-        </ol>
-      </div>
+      <details class="more">
+        <summary>How it was built <span class="more-hint">problem · approach · 4 key decisions</span></summary>
+        <div class="more-body">
+        <dl class="spec">
+          <div>
+            <dt>Problem</dt>
+            <dd>Can a chaotic classical system serve as an entropy source for a quantum degree of freedom, with entropy claims that survive physically realistic dynamics and standard statistical assessment?</dd>
+          </div>
+          <div>
+            <dt>Approach</dt>
+            <dd>Coupled pendulum–qubit simulation in Python (NumPy, SciPy, QuTiP) under a Lindblad master equation; 4:1 SHA-256 conditioning; NIST SP 800-90B on the raw source and SP 800-22 on the conditioned stream; a physical pendulum for measured trajectories.</dd>
+          </div>
+        </dl>
+
+        <div class="decisions">
+          <h4>Key decisions</h4>
+          <ol>
+            <li>
+              <p class="d-title">Open-system model</p>
+              <p>Replaced a closed-system Schrödinger model with a Lindblad master equation after the unitary model produced unphysically idealized dynamics, capturing realistic relaxation and dephasing.</p>
+            </li>
+            <li>
+              <p class="d-title">Conservative integration</p>
+              <p>Moved the classical integrator to an implicit conservative scheme to eliminate unphysical energy growth: relative drift 1.7×10<sup>−6</sup> over 2×10<sup>4</sup> s.</p>
+            </li>
+            <li>
+              <p class="d-title">From simulation to measurement</p>
+              <p>Designed and built a physical double pendulum with two wireless rotary encoders, extending the work to measured trajectories and phase portraits.</p>
+            </li>
+            <li>
+              <p class="d-title">Conservative entropy claim</p>
+              <p>Reported the minimum across the full SP 800-90B non-IID estimator suite on the raw source, and validated the conditioned stream separately against all 15 SP 800-22 categories.</p>
+            </li>
+          </ol>
+        </div>
+        </div>
+      </details>
 
       <div class="figs">
         <figure class="fig">
@@ -203,42 +206,45 @@
         </div>
       </dl>
 
-      <dl class="spec">
-        <div>
-          <dt>Problem</dt>
-          <dd>Determine whether epiboly tissue spreading is consistent with Kelvin–Voigt viscoelastic-solid mechanics.</dd>
-        </div>
-        <div>
-          <dt>Approach</dt>
-          <dd>Vicsek alignment extended with a Hookean spring force, Voronoi-tessellated cell contacts, and inertial dynamics; Python/NumPy simulator delivered as a Streamlit app.</dd>
-        </div>
-        <div>
-          <dt>My role</dt>
-          <dd>Extended the model, derived the integrator stability bounds, and built the simulator and its validation suite.</dd>
-        </div>
-      </dl>
+      <p class="role"><span>My role</span> Extended the model, derived the integrator stability bounds, and built the simulator and its validation suite.</p>
 
-      <div class="decisions">
-        <h4>Key decisions</h4>
-        <ol>
-          <li>
-            <p class="d-title">Mechanics in the model</p>
-            <p>Added a Hookean spring force and Voronoi tessellation to the standard Vicsek model to define cell contacts and neighbor geometry.</p>
-          </li>
-          <li>
-            <p class="d-title">Inertial dynamics</p>
-            <p>Random per-cell masses, headings driven by net force, and energy-conserving elastic collisions.</p>
-          </li>
-          <li>
-            <p class="d-title">Derived, not tuned, time-stepping</p>
-            <p>Derived stability bounds that set adaptive symplectic sub-stepping, verified against the analytic two-body oscillator.</p>
-          </li>
-          <li>
-            <p class="d-title">Built to be shared</p>
-            <p>Fault-isolated model lineages in a Streamlit app shared with a collaborator, so variants can evolve without breaking the validated baseline.</p>
-          </li>
-        </ol>
-      </div>
+      <details class="more">
+        <summary>How it was built <span class="more-hint">problem · approach · 4 key decisions</span></summary>
+        <div class="more-body">
+        <dl class="spec">
+          <div>
+            <dt>Problem</dt>
+            <dd>Determine whether epiboly tissue spreading is consistent with Kelvin–Voigt viscoelastic-solid mechanics.</dd>
+          </div>
+          <div>
+            <dt>Approach</dt>
+            <dd>Vicsek alignment extended with a Hookean spring force, Voronoi-tessellated cell contacts, and inertial dynamics; Python/NumPy simulator delivered as a Streamlit app.</dd>
+          </div>
+        </dl>
+
+        <div class="decisions">
+          <h4>Key decisions</h4>
+          <ol>
+            <li>
+              <p class="d-title">Mechanics in the model</p>
+              <p>Added a Hookean spring force and Voronoi tessellation to the standard Vicsek model to define cell contacts and neighbor geometry.</p>
+            </li>
+            <li>
+              <p class="d-title">Inertial dynamics</p>
+              <p>Random per-cell masses, headings driven by net force, and energy-conserving elastic collisions.</p>
+            </li>
+            <li>
+              <p class="d-title">Derived, not tuned, time-stepping</p>
+              <p>Derived stability bounds that set adaptive symplectic sub-stepping, verified against the analytic two-body oscillator.</p>
+            </li>
+            <li>
+              <p class="d-title">Built to be shared</p>
+              <p>Fault-isolated model lineages in a Streamlit app shared with a collaborator, so variants can evolve without breaking the validated baseline.</p>
+            </li>
+          </ol>
+        </div>
+        </div>
+      </details>
 
       <div class="figs">
         <figure class="fig">

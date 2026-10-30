@@ -110,7 +110,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero {
   display: flex; flex-direction: column; align-items: flex-start;
   gap: 1rem;
-  padding-top: 3rem; padding-bottom: 3.5rem;
+  padding-top: 1.5rem; padding-bottom: 2.5rem;
 }
 
 .id-card {
@@ -118,11 +118,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: 1.6rem 1.7rem 1.7rem;
+  padding: 1.25rem 1.25rem 1.35rem;
 }
 .portrait {
   display: block;
-  width: 190px; height: 190px;
+  width: 150px; height: 150px;   /* phones; 190px from 760px up */
   object-fit: cover; object-position: 50% 22%;
   border-radius: 50%;
   border: 3px solid var(--bg);
@@ -149,7 +149,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: 1.6rem 1.7rem;
+  padding: 1.25rem;
   display: grid; grid-template-columns: 1fr; gap: 1.3rem;
 }
 .bio { color: var(--text-2); font-size: 1rem; line-height: 1.7; max-width: 70ch; }
@@ -175,9 +175,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
 /* ---------------- Sections ---------------- */
-.section { padding-top: 3.5rem; padding-bottom: 3.5rem; border-top: 1px solid var(--rule-soft); }
+.section { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid var(--rule-soft); }
 
-.sec-head { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1.8rem; }
+.sec-head { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1.3rem; }
 .sec-idx { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; }
 .sec-head h2 {
   font-family: var(--head); font-weight: 600;
@@ -216,9 +216,9 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
   border: 1px solid var(--rule);
   border-radius: 10px;
   overflow: hidden;
-  margin: 1.6rem 0;
+  margin: 1.2rem 0;
 }
-.ro { background: var(--surface-in); padding: 1rem 1.1rem 1.05rem; }
+.ro { background: var(--surface-in); padding: 0.8rem 0.85rem 0.85rem; }
 .ro dt {
   font-family: var(--mono); font-size: 0.64rem; color: var(--muted);
   letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.45rem;
@@ -226,15 +226,44 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 .ro dt sub { text-transform: none; }
 .ro .v {
   font-family: var(--mono); font-weight: 500;
-  font-size: 1.5rem; line-height: 1.1; color: var(--text);
+  font-size: 1.25rem; line-height: 1.1; color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 .ro-key { grid-column: 1 / -1; }          /* headline result spans the panel */
-.ro-key .v { color: var(--accent); font-size: 2rem; }
+.ro-key .v { color: var(--accent); font-size: 1.7rem; }
 .ro .u { font-family: var(--mono); font-size: 0.74rem; color: var(--text-2); margin-left: 0.4rem; }
 .ro .m { display: block; font-size: 0.74rem; color: var(--muted); margin-top: 0.35rem; line-height: 1.4; }
 
-/* Problem / Approach / Role */
+/* My role: always visible, one line of ownership */
+.role { color: var(--text-2); font-size: 0.95rem; max-width: 80ch; margin-bottom: 1.1rem; }
+.role span, .transfer-k {
+  font-family: var(--mono); font-weight: 500; font-size: 0.68rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+}
+.role span { margin-right: 0.5rem; }
+
+/* "How it was built": native expand/collapse, no JavaScript */
+.more { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface-in); }
+.more summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.2rem 0.75rem;
+  padding: 0.85rem 2.6rem 0.85rem 1rem; position: relative;
+  font-family: var(--head); font-weight: 600; font-size: 0.95rem; color: var(--text);
+  border-radius: 10px;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after {
+  content: "+"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 1.1rem; color: var(--accent); line-height: 1;
+}
+.more[open] summary::after { content: "−"; }
+.more summary:hover { background: rgba(255, 255, 255, 0.02); }
+.more-hint { font-family: var(--mono); font-weight: 400; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em; }
+.more-body { padding: 0 1rem 1rem; border-top: 1px solid var(--rule-soft); }
+.more-body .spec > div:first-child { border-top: 0; }
+.more-body .decisions li { background: var(--surface); }
+
+/* Problem / Approach */
 .spec > div {
   display: grid; grid-template-columns: 1fr; gap: 0.2rem;
   padding: 0.85rem 0; border-top: 1px solid var(--rule-soft);
@@ -246,12 +275,12 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 .spec dd { color: var(--text-2); max-width: 74ch; }
 
 /* Key decisions */
-.decisions { margin-top: 1.6rem; }
-.decisions h4, .transfer-k {
+.decisions { margin-top: 1rem; }
+.decisions h4 {
   font-family: var(--mono); font-weight: 500; font-size: 0.68rem;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.8rem;
 }
-.decisions h4 { margin-bottom: 0.8rem; }
 .decisions ol {
   list-style: none; counter-reset: d;
   display: grid; grid-template-columns: 1fr; gap: 0.75rem;
@@ -272,7 +301,7 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 
 /* Figures: a figure whose image file is missing hides itself (onerror in the HTML),
    and a figure row with nothing left in it disappears entirely. */
-.figs { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.6rem; }
+.figs { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.2rem; }
 .figs:not(:has(figure:not([hidden]))) { display: none; }
 .fig[hidden] { display: none; }
 .fig img {
@@ -288,7 +317,7 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 }
 
 .transfer {
-  margin-top: 1.6rem; padding-top: 1.1rem;
+  margin-top: 1.2rem; padding-top: 1rem;
   border-top: 1px dashed var(--rule);
   color: var(--text-2); font-size: 0.93rem; max-width: 80ch;
 }
@@ -408,10 +437,17 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 /* ================= Larger screens ================= */
 @media (min-width: 760px) {
   body { font-size: 17px; }
-  .hero { padding-top: 4rem; padding-bottom: 4.5rem; }
+  .hero { padding-top: 2.75rem; padding-bottom: 3.5rem; }
+  .portrait { width: 190px; height: 190px; }
+  .id-card, .bio-card { padding: 1.6rem 1.7rem; }
+  .sec-head { margin-bottom: 1.8rem; }
+  .ro { padding: 1rem 1.1rem 1.05rem; }
+  .ro .v { font-size: 1.5rem; }
+  .ro-key .v { font-size: 2rem; }
+  .study + .study { margin-top: 2rem; }
   .bio-card { grid-template-columns: 200px 1fr; gap: 2rem; padding: 1.8rem 2rem; }
   .bio-actions, .bio { order: 0; }
-  .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .section { padding-top: 3.75rem; padding-bottom: 3.75rem; }
   .spec > div { grid-template-columns: 120px 1fr; gap: 1.2rem; }
   .decisions ol { grid-template-columns: 1fr 1fr; }
   .figs { grid-template-columns: 1fr 1fr; }
