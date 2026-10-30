@@ -94,6 +94,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   overflow-x: auto; scrollbar-width: none;
 }
 .nav::-webkit-scrollbar { display: none; }
+.nav {   /* phones: fade the right edge so it reads as scrollable, not cut off */
+  -webkit-mask-image: linear-gradient(to right, #000 82%, transparent);
+  mask-image: linear-gradient(to right, #000 82%, transparent);
+  padding-right: 1.5rem;
+}
 .nav a {
   font-family: var(--mono); font-size: 0.72rem;
   letter-spacing: 0.08em; text-transform: uppercase;
@@ -205,7 +210,7 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 /* Readouts: the scannable numbers */
 .readouts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));   /* explicit columns: no empty cells */
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -265,26 +270,16 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 }
 .decisions li p:last-child { color: var(--text-2); font-size: 0.93rem; }
 
-/* Figures — show a labelled slot until the asset file exists */
+/* Figures: a figure whose image file is missing hides itself (onerror in the HTML),
+   and a figure row with nothing left in it disappears entirely. */
 .figs { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.6rem; }
+.figs:not(:has(figure:not([hidden]))) { display: none; }
+.fig[hidden] { display: none; }
 .fig img {
-  position: relative; display: block;
+  display: block;
   width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
   background: var(--surface-in);
   border: 1px solid var(--rule); border-radius: 10px;
-  color: transparent;
-}
-.fig img::before {            /* rendered only when the image fails to load */
-  content: ""; position: absolute; inset: 0;
-  background: var(--surface-in); border-radius: 10px;
-  border: 1px dashed var(--rule);
-}
-.fig img::after {
-  content: "AWAITING ASSET\A" attr(data-slot);
-  white-space: pre; position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
-  line-height: 1.8; color: var(--muted);
 }
 .fig figcaption, .video figcaption { font-size: 0.85rem; color: var(--text-2); margin-top: 0.55rem; }
 .fig figcaption span {
@@ -420,6 +415,8 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
   .spec > div { grid-template-columns: 120px 1fr; gap: 1.2rem; }
   .decisions ol { grid-template-columns: 1fr 1fr; }
   .figs { grid-template-columns: 1fr 1fr; }
+  .readouts.ro-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .nav { -webkit-mask-image: none; mask-image: none; }
   .video { grid-template-columns: 360px 1fr; gap: 2rem; }
   .video figcaption { padding-top: 0.2rem; }
   .row { grid-template-columns: 1fr 190px; gap: 2rem; align-items: start; }
@@ -427,6 +424,19 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
   .row-metric .u { display: block; margin: 0.25rem 0 0; }
   .skills { grid-template-columns: 1fr 1fr; }
   .two-col { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+
+/* Wide screens: identity card and bio card side by side, so the hero fills the column.
+   Below 960px the approved stacked layout is unchanged. */
+@media (min-width: 960px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+  .id-card { width: auto; }
+  .bio-card { grid-template-columns: 180px minmax(0, 1fr); align-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
