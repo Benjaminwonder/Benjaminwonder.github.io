@@ -38,26 +38,25 @@
 
   <!-- ============ HERO ============ -->
   <section id="top" class="hero container" aria-label="Profile">
-    <div class="profile">
-      <div class="profile-id">
-        <img class="portrait" src="profile.jpg" alt="Portrait of Benjamin Nukunu Davis" width="190" height="190">
-        <div class="profile-name">
-          <h1 class="name">Benjamin Nukunu Davis</h1>
-          <p class="handle">Physics + Computer Science · Stetson University ’27</p>
-          <ul class="tags" aria-label="Focus areas">
-            <li>Computational dynamics</li>
-            <li>Open quantum systems</li>
-            <li>Hardware validation</li>
-          </ul>
-        </div>
-      </div>
+    <div class="id-card">
+      <img class="portrait" src="profile.jpg" alt="Portrait of Benjamin Nukunu Davis" width="190" height="190">
+      <h1 class="name">Benjamin Nukunu Davis</h1>
+      <p class="handle">Physics + Computer Science · Stetson University ’27</p>
+      <ul class="tags" aria-label="Focus areas">
+        <li>Computational dynamics</li>
+        <li>Open quantum systems</li>
+        <li>Hardware validation</li>
+      </ul>
+    </div>
+
+    <div class="bio-card">
       <p class="bio">
-      I build simulations of chaotic and quantum systems, then hold them to experimental and
-      statistical standards. My current work couples double-pendulum chaos to a driven qubit as an
-      entropy source — 3×10<sup>8</sup> raw bits at <strong>0.939 bits/bit</strong> assessed
-      min-entropy (NIST SP 800-90B) — with a hand-built, encoder-instrumented pendulum for measured
-      trajectories. Next: PhD research in hypersonics, propulsion, and deployable aerospace structures.
-    </p>
+        I build simulations of chaotic and quantum systems, then hold them to experimental and
+        statistical standards. My current work couples double-pendulum chaos to a driven qubit as an
+        entropy source — 3×10<sup>8</sup> raw bits at <strong>0.939 bits/bit</strong> assessed
+        min-entropy (NIST SP 800-90B) — with a hand-built, encoder-instrumented pendulum for measured
+        trajectories. Next: PhD research in hypersonics, propulsion, and deployable aerospace structures.
+      </p>
       <div class="bio-actions">
         <a class="btn btn-primary" href="#research">View research</a>
         <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -83,7 +82,8 @@
         </p>
         <h3 id="rng-h">Semiclassical chaos–quantum hybrid random number generator</h3>
         <p class="study-lede">
-          Chaotic double-pendulum trajectories modulate the Hamiltonian of a driven qubit. The
+          Chaotic double-pendulum trajectories modulate the Hamiltonian of a driven qubit, linking
+          classical chaos to open-system quantum dynamics. The
           response is extracted, conditioned, and statistically certified as a high-entropy bitstream.
         </p>
       </header>
@@ -246,11 +246,23 @@
       </details>
 
       <div class="figs">
+        <figure class="fig fig-wide">
+          <video autoplay muted loop playsinline controls preload="metadata"
+                 aria-label="Looping simulation of the agent-based tissue model">
+            <source src="media/cell-sim.mp4" type="video/mp4"
+                    onerror="this.closest('figure').hidden=true">
+          </video>
+          <figcaption><span>Fig. 3</span> Simulation run of the extended Vicsek tissue model.</figcaption>
+        </figure>
         <figure class="fig">
           <img onerror="this.closest('figure').hidden=true" src="media/cell-sim.png"
-               alt="Snapshot of the agent-based tissue simulator"
-               data-slot="media/cell-sim.png">
-          <figcaption><span>Fig. 3</span> Simulator snapshot.</figcaption>
+               alt="Snapshot of the agent-based tissue simulator showing Voronoi cell contacts">
+          <figcaption><span>Fig. 4</span> Simulator snapshot: agents and Voronoi contacts.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img onerror="this.closest('figure').hidden=true" src="media/vicsek-validation.png"
+               alt="Order parameter versus noise, simulation compared with Vicsek et al. (1995)">
+          <figcaption><span>Fig. 5</span> Baseline validation: order parameter vs. noise against Vicsek et al. (1995).</figcaption>
         </figure>
       </div>
 
@@ -316,35 +328,42 @@
     <ul class="rows">
       <li class="row">
         <div class="row-main">
-          <h3>Satellite fuel allocator</h3>
-          <p class="row-tag">Java · orbital mechanics</p>
-          <p>Pairs propellant tanks against maneuver targets using Δv budgets from the Tsiolkovsky equation (Δv = v<sub>e</sub> ln(m<sub>0</sub>/m<sub>f</sub>)) and O(n) hash-map pairing; handles duplicate, missing, and invalid inputs.</p>
+          <h3>Rocket launch simulator</h3>
+          <p class="row-tag">Python · flight dynamics</p>
+          <p>Launch-trajectory simulation with variable thrust profiles, aerodynamic drag from an atmospheric density model and drag coefficient, and propellant consumption via the Tsiolkovsky equation. Euler and improved-Euler integration of the equations of motion under gravity and drag; modular propulsion, aerodynamics, and solver components with configurable mass, burn time, and specific impulse for rapid trade studies.</p>
         </div>
-        <p class="row-metric"><span class="v">≈15%</span><span class="u">allocation-efficiency gain</span></p>
+        <p class="row-metric"><span class="v v-text">Validated</span><span class="u">trajectory &amp; burnout velocity vs. analytic cases</span></p>
+      </li>
+      <li class="row">
+        <div class="row-main">
+          <h3>Michelson interferometer data acquisition</h3>
+          <p class="row-tag">LabVIEW · optical instrumentation</p>
+          <p>LabVIEW virtual instrument for real-time acquisition and processing of interference fringes. Signal-processing routines extract fringe counts to compute laser wavelength and refractive index, with calibration and error handling for optical path-length variations. A 15&nbsp;kHz ramp-voltage drive, hardware I/O, front-panel controls, and TDMS data logging support live demonstration and post-processing.</p>
+        </div>
+        <p class="row-metric"><span class="v">15 kHz</span><span class="u">ramp-voltage drive · λ and n from fringe counts</span></p>
       </li>
       <li class="row">
         <div class="row-main">
           <h3>Embedded sensor processing</h3>
           <p class="row-tag">C++ · embedded systems</p>
-          <p>Sorts sensor data inside a fixed memory budget modeled on aerospace and automotive microcontrollers. Instruments swaps, comparisons, and <code>std::chrono</code> timing; early termination for real-time deadlines; <code>std::mt19937</code> randomized reliability tests.</p>
+          <p>Sorts sensor data within a strict memory budget simulating resource-limited aerospace and automotive microcontrollers, instrumenting swaps, comparisons, and <code>std::chrono</code> timing, with early termination for real-time requirements and <code>std::mt19937</code> randomized reliability tests.</p>
         </div>
         <p class="row-metric"><span class="v">1 KB</span><span class="u">memory envelope</span></p>
       </li>
       <li class="row">
         <div class="row-main">
-          <h3>Real-time data acquisition</h3>
-          <p class="row-tag">LabVIEW (G) · instrumentation</p>
-          <p>Ramp-voltage generation with TDMS logging and integrated sensors for physics experiments.</p>
+          <h3>Satellite fuel optimizer</h3>
+          <p class="row-tag">Java · orbital mechanics</p>
+          <p>Fuel-tank pairing for orbital maneuvers under mission constraints, using Δv budgets from the Tsiolkovsky equation (Δv = v<sub>e</sub> ln(m<sub>i</sub>/m<sub>f</sub>)); handles duplicates, missing pairs, and invalid inputs.</p>
         </div>
-        <p class="row-metric"><span class="v">15 kHz</span><span class="u">ramp-voltage generation</span></p>
+        <p class="row-metric"><span class="v">≈15%</span><span class="u">allocation-efficiency gain</span></p>
       </li>
       <li class="row">
         <div class="row-main">
-          <h3>ColorText Notifier</h3>
-          <p class="row-tag">JavaScript · Chrome Extensions API</p>
-          <p>Event-driven page monitor using MutationObserver instead of polling; rate-limited (2 s cooldown) Pushbullet alerts; validated CSS-selector, HEX, and regex inputs.</p>
+          <h3>Multi-output digital logic design</h3>
+          <p class="row-tag">Digital design · Espresso</p>
+          <p>Designed and minimized multi-output combinational circuits with K-maps and the Espresso logic minimizer, comparing gate counts and verifying functional equivalence through simulation.</p>
         </div>
-        <p class="row-metric"><span class="v">−25%</span><span class="u">CPU vs. polling</span></p>
       </li>
     </ul>
   </section>
@@ -359,9 +378,9 @@
     <article class="job">
       <header class="job-head">
         <h3>Nazo Engineering Services Ltd</h3>
-        <p class="study-meta"><span>Apprentice</span><span>2014 – 2019</span></p>
+        <p class="study-meta"><span>Apprentice</span><span>Jan 2014 – Sep 2019</span></p>
       </header>
-      <p class="job-lede">Five years of maintenance and fabrication on production machinery before university.</p>
+      <p class="job-lede">More than five years of fabrication and machine maintenance in a production workshop before university.</p>
       <ul class="ticks">
         <li>Operated and maintained <strong>10+ M6FFC grain-milling machines</strong> serving hundreds of customers per day</li>
         <li>Performed preventive maintenance on diesel generators to prevent operational downtime</li>
@@ -381,19 +400,19 @@
     <div class="skills">
       <div class="skill">
         <h3>Simulation &amp; numerics</h3>
-        <p>Python (NumPy, SciPy, QuTiP) · Wolfram Mathematica · Lindblad master equations · implicit &amp; symplectic integrators · agent-based models · KD-tree and Voronoi geometry</p>
+        <p>Python (NumPy, SciPy, QuTiP) · Mathematica · TensorFlow · Lindblad master equations · symplectic &amp; implicit integrators · KD-tree spatial search</p>
       </div>
       <div class="skill">
         <h3>Verification &amp; statistics</h3>
-        <p>NIST SP 800-90B · NIST SP 800-22 · analytic benchmark verification · pytest regression suites</p>
+        <p>NIST SP 800-90B · NIST SP 800-22 · analytic-benchmark verification · pytest</p>
       </div>
       <div class="skill">
-        <h3>Hardware &amp; acquisition</h3>
-        <p>LabVIEW (G) · rotary-encoder instrumentation · TDMS logging · SMAW welding · metal and thermoplastic fabrication</p>
+        <h3>Hardware, CAD &amp; fabrication</h3>
+        <p>LabVIEW · Verilog &amp; FPGA programming · SolidWorks (parametric &amp; assembly) · Rhinoceros 3D · 3D printing (FDM/SLA, UltiMaker Cura) · rotary-encoder instrumentation · SMAW welding</p>
       </div>
       <div class="skill">
         <h3>Software</h3>
-        <p>C++ · Java · JavaScript · SQL · LaTeX · Git · Linux · Streamlit · TensorFlow · REST APIs</p>
+        <p>Python · C++ · Java · SQL · LaTeX · Git · Linux · Streamlit</p>
       </div>
     </div>
   </section>
@@ -408,16 +427,16 @@
     <div class="two-col">
       <div>
         <h3>Stetson University</h3>
-        <p class="study-meta"><span>B.S. Physics &amp; Computer Science (dual major)</span><span>Expected May 2027</span><span>GPA 3.67</span></p>
+        <p class="study-meta"><span>B.S. Physics &amp; Computer Science (dual major)</span><span>Expected August 2027</span></p>
         <p class="honors">Presidential Fellows Scholarship (top 1% of admitted students) · Dean’s List</p>
-        <p class="course"><span>Physics</span> Classical Mechanics · Electromagnetism · Relativity · Atomic/Nuclear Physics · Lab Techniques</p>
-        <p class="course"><span>CS</span> Computer Organization · Algorithm Analysis · Software Development (C++) · Data Science · Discrete Mathematics</p>
+        <p class="course"><span>Physics</span> Classical Mechanics · Electromagnetism · Laboratory Techniques</p>
+        <p class="course"><span>CS</span> Operating Systems · Algorithm Analysis · Computer Organization · Data Science</p>
       </div>
       <div>
         <h3>AFROTC · Embry-Riddle Aeronautical University</h3>
-        <p class="study-meta"><span>Det 157</span></p>
-        <p><strong>Flight Commander.</strong> Led cadet units and technical drills under operational constraints while mentoring teams to mission readiness. Also served as Flight Academics Officer and Flight Physical Fitness Officer.</p>
-        <p class="course"><span>Stetson</span> Presidential Fellow Mentor for incoming students</p>
+        <p class="study-meta"><span>Det 157</span><span>Aug 2024 – Feb 2025</span></p>
+        <p><strong>Flight Commander.</strong> Led the cadet flight unit and coordinated technical drills. As Flight Academics Officer, organized academic support and mentorship; as Flight Physical Fitness Officer, tracked performance standards.</p>
+        <p class="course"><span>Stetson</span> Presidential Fellow Mentor (Aug 2025 – Present): mentoring high-achieving students through academic transition, course planning, and campus integration.</p>
       </div>
     </div>
   </section>

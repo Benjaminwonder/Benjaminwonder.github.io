@@ -106,32 +106,36 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .nav a:hover { color: var(--text); text-decoration: none; }
 
-/* ---------------- Hero: one profile card ----------------
-   Photo, name and tags, then the bio directly below the photo, then actions.
-   Phones: everything stacks. 760px+: photo sits left of the name block. */
-.hero { padding-top: 1.5rem; padding-bottom: 2.5rem; }
+/* ---------------- Hero: two separate cards ----------------
+   Square identity card (photo above name), then a full-width bio card below it:
+   bio text first, action buttons in a row underneath. Same order on every screen. */
+.hero {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
+  padding-top: 1.5rem; padding-bottom: 2.5rem;
+}
 
-.profile {
+.id-card {
+  width: min(100%, 360px);
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: 1.35rem 1.25rem 1.4rem;
+  padding: 1.25rem 1.25rem 1.35rem;
 }
-.profile-id { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
 .portrait {
-  display: block; flex-shrink: 0;
-  width: 150px; height: 150px;   /* phones; 176px from 760px up */
+  display: block;
+  width: 150px; height: 150px;   /* phones; 190px from 760px up */
   object-fit: cover; object-position: 50% 22%;
   border-radius: 50%;
   border: 3px solid var(--bg);
   box-shadow: 0 0 0 1px var(--rule), 0 0 0 4px var(--accent-dim);
+  margin-bottom: 1.1rem;
 }
 .name {
   font-family: var(--serif); font-weight: 500;
   font-size: 29px; line-height: 1.15; letter-spacing: -0.005em;
   margin-bottom: 0.35rem;
 }
-.handle { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.8rem; }
+.handle { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.9rem; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tags li {
   font-family: var(--mono); font-size: 0.66rem;
@@ -140,11 +144,16 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   border: 1px solid var(--rule); border-radius: 999px;
   padding: 0.18rem 0.6rem;
 }
-.bio {
-  color: var(--text-2); font-size: 1rem; line-height: 1.7; max-width: 76ch;
-  margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule-soft);
+
+.bio-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.25rem;
 }
-.bio-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.3rem; }
+.bio { color: var(--text-2); font-size: 1rem; line-height: 1.7; max-width: 80ch; }
+.bio-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
 .bio-actions .btn-primary, .bio-actions .btn-ghost { flex: 1 1 140px; }   /* phones: two up */
 .bio-actions .btn-muted { flex: 1 1 100%; }
 
@@ -296,6 +305,11 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 .figs { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.2rem; }
 .figs:not(:has(figure:not([hidden]))) { display: none; }
 .fig[hidden] { display: none; }
+.fig-wide { grid-column: 1 / -1; }
+.fig video {
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain;
+  background: #000; border: 1px solid var(--rule); border-radius: 10px;
+}
 .fig img {
   display: block;
   width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
@@ -374,6 +388,7 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
   font-family: var(--mono); font-weight: 500; font-size: 1.3rem;
   color: var(--accent); font-variant-numeric: tabular-nums;
 }
+.row-metric .v-text { font-size: 1rem; letter-spacing: 0.02em; }   /* qualitative outcome, not a number */
 .row-metric .u {
   font-family: var(--mono); font-size: 0.66rem; color: var(--muted);
   letter-spacing: 0.06em; text-transform: uppercase; margin-left: 0.5rem;
@@ -430,9 +445,9 @@ h3 { font-family: var(--head); font-weight: 600; letter-spacing: -0.01em; color:
 @media (min-width: 760px) {
   body { font-size: 17px; }
   .hero { padding-top: 2.75rem; padding-bottom: 3.5rem; }
-  .profile { padding: 2rem 2.2rem 2.1rem; }
-  .profile-id { flex-direction: row; align-items: center; gap: 1.6rem; }
-  .portrait { width: 176px; height: 176px; }
+  .id-card { padding: 1.6rem 1.7rem 1.7rem; }
+  .bio-card { padding: 1.6rem 1.8rem; }
+  .portrait { width: 190px; height: 190px; }
   .bio-actions .btn-primary, .bio-actions .btn-ghost, .bio-actions .btn-muted { flex: 0 0 auto; }
   .sec-head { margin-bottom: 1.8rem; }
   .ro { padding: 1rem 1.1rem 1.05rem; }
